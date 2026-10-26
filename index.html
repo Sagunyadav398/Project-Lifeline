@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#a81720">
+  <title>Lifeline — Smart Blood Matching</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="#home" aria-label="Lifeline home"><span class="brand-mark">♥</span><span>Lifeline</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+    <nav id="navLinks">
+      <a class="nav-link active" href="#home">Home</a>
+      <a class="nav-link" href="#find">Find Donors</a>
+      <a class="nav-link" href="#donate">Donate Blood</a>
+      <a class="nav-link" href="#drives">Blood Drives</a>
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-button" title="Accessibility options" id="accessibilityBtn" aria-label="Accessibility">♧</button>
+      <button class="icon-button" title="Voice search demo" id="voiceBtn" aria-label="Voice search">♩</button>
+      <button class="icon-button" title="Language" id="languageBtn" aria-label="Language">◎</button>
+      <button class="emergency-small" data-open="emergency">☎ <span>Emergency</span></button>
+      <button class="text-button" data-open="signin">Sign In</button>
+      <button class="signup-button" data-open="signup">Sign Up</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">EVERY DONATION COUNTS</p>
+        <h1>Save Lives with<br><span>Smart Blood</span><br>Matching</h1>
+        <p class="hero-description">Connect blood donors with recipients instantly through smart matching, donor verification, and real-time emergency requests.</p>
+        <div class="hero-buttons">
+          <button class="primary-button" data-open="emergency">☎ &nbsp; Emergency Request</button>
+          <button class="outline-button" data-open="donor">♡ &nbsp; Become a Donor</button>
+        </div>
+        <div class="trust-row"><span>⌁ &nbsp;24/7 Community Support</span><span>♢ &nbsp;Privacy-conscious</span></div>
+      </div>
+      <div class="compat-card">
+        <h2>Blood Type Compatibility</h2>
+        <p class="card-subtitle">Explore the donor directory by blood group</p>
+        <div class="blood-grid" id="bloodGrid"></div>
+        <p class="local-note">Counts are based on donor records saved in this browser.</p>
+      </div>
+      <div class="orb orb-one"></div><div class="orb orb-two"></div>
+    </section>
+
+    <section class="section" id="find">
+      <div class="section-heading"><p class="eyebrow red">FIND HELP NEAR YOU</p><h2>Find Blood Donors</h2><p>Search the locally saved donor directory by blood group and city.</p></div>
+      <div class="search-panel">
+        <label>Blood group<select id="filterBlood"><option value="">All blood groups</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></label>
+        <label>City<input id="filterCity" placeholder="e.g. Kanpur"></label>
+        <label>Donor name<input id="filterName" placeholder="Search name"></label>
+        <button class="primary-button" id="searchBtn">Search donors</button>
+      </div>
+      <div class="results-meta"><span id="resultCount">0 donors</span><button class="subtle-button" id="clearFilters">Clear filters</button></div>
+      <div id="donorResults" class="donor-results"></div>
+    </section>
+
+    <section class="section tinted" id="donate">
+      <div class="section-heading"><p class="eyebrow red">BE SOMEONE'S HERO</p><h2>Become a Donor</h2><p>Add your details to this browser's local donor directory.</p></div>
+      <form id="donorForm" class="form-card">
+        <div class="form-grid">
+          <label>Full name *<input name="name" required maxlength="80" placeholder="Your full name"></label>
+          <label>Blood group *<select name="blood" required><option value="">Choose blood group</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></label>
+          <label>City *<input name="city" required maxlength="80" placeholder="Your city"></label>
+          <label>Phone number *<input name="phone" required type="tel" maxlength="20" placeholder="Contact number"></label>
+          <label class="full">Email (optional)<input name="email" type="email" maxlength="120" placeholder="you@example.com"></label>
+          <label class="check-label full"><input name="available" type="checkbox" checked> I am currently available to be contacted as a donor.</label>
+        </div>
+        <button class="primary-button" type="submit">Save donor profile</button>
+        <p class="form-note">Demo only: records stay in this browser and are not sent to a server.</p>
+      </form>
+    </section>
+
+    <section class="section" id="drives">
+      <div class="section-heading"><p class="eyebrow red">GET INVOLVED</p><h2>Community Blood Drives</h2><p>Keep track of blood donation events on this device.</p></div>
+      <form id="driveForm" class="inline-form">
+        <input name="title" required maxlength="100" placeholder="Event name">
+        <input name="city" required maxlength="80" placeholder="City / location">
+        <input name="date" type="date" required>
+        <button class="primary-button" type="submit">Add event</button>
+      </form>
+      <div id="driveResults" class="drive-results"></div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div><p class="eyebrow red">ABOUT LIFELINE</p><h2>Small acts. Lifesaving impact.</h2></div>
+      <p>Lifeline is a simple demo interface for connecting people who want to donate blood with people searching for donors. It provides local donor records, basic search, and emergency request tracking in your browser. Always confirm donor eligibility and medical details with qualified healthcare professionals.</p>
+    </section>
+
+    <section class="section tinted" id="contact">
+      <div class="section-heading"><p class="eyebrow red">WE'RE HERE TO HELP</p><h2>Contact Lifeline</h2><p>Send a message saved locally for this demo.</p></div>
+      <form id="contactForm" class="form-card compact-form">
+        <label>Your name<input name="name" required maxlength="80"></label>
+        <label>Email<input name="email" type="email" required maxlength="120"></label>
+        <label>Message<textarea name="message" required maxlength="1000" rows="4"></textarea></label>
+        <button class="primary-button" type="submit">Save message</button>
+      </form>
+    </section>
+  </main>
+  <footer><a class="brand footer-brand" href="#home"><span class="brand-mark">♥</span><span>Lifeline</span></a><span>Made to help communities connect. Demo data is stored in this browser.</span><a href="#home">Back to top ↑</a></footer>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close dialog">×</button>
+      <h2 id="modalTitle">Emergency Request</h2>
+      <div id="modalContent"></div>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
